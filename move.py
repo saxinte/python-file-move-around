@@ -31,10 +31,10 @@ def move_file_to_folder(filePath, destinationFolder):
         filename = os.path.split(filePath)[1];
         exists = os.path.isfile(os.path.join(destinationFolder, filename))
         if not exists:
-            print('Moving %s to %s') % (filePath, destinationFolder)
+            print('Moving %s to %s' % (filePath, destinationFolder))
             shutil.move(filePath, destinationFolder)
         else:
-            raise Exception("File {0} already exist in destination {1}".format(str(filePath), str(destinationFolder)))
+            raise Exception('File {0} already exist in destination {1}'.format(str(filePath), str(destinationFolder)))
     else:
         raise Exception('Destination directory is not a folder.')
 
@@ -80,7 +80,7 @@ def move_folder_content(folder, destinationFolder):
                 if exist:
                     move_file_to_folder(filePath, newDestination)
                 else:
-                    raise Exception("Folder {0} does not exist in destination {1}".format(str(os.path.join('./', folder, parentDirectoryName)), str(os.path.join('./', destinationFolder))))
+                    raise Exception('Folder {0} does not exist in destination {1}'.format(str(os.path.join('./', folder, parentDirectoryName)), str(os.path.join('./', destinationFolder))))
 
 def removeEmptyFolders(path, removeRoot=False):
 
@@ -101,10 +101,10 @@ def removeEmptyFolders(path, removeRoot=False):
     # if folder empty, delete it
     files = os.listdir(path)
     if len(files) == 0 and removeRoot:
-        print "Removing empty folder:", path
+        print ('Removing empty folder: %s' % path)
         os.rmdir(path)
 
 try:
     move_folders_page(folders_to_run, final_destination)
 except Exception as error:
-    print("Error found: {0}".format(str(error)))
+    print('Error found: {0}'.format(str(error)))
